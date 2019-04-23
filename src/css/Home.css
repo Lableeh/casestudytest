@@ -1,0 +1,21 @@
+.column{
+    float: left;
+    width: 50%;
+}
+.home-wrapper:after{
+	display:table;
+	clear:both;
+    width:100%;	
+    
+}
+
+.home-wrapper{
+    color: white;
+}
+
+p{
+    font-family: Verdana, Geneva, sans-serif;
+}
+h2{
+    font-family: 'Sofia';font-size: 22px;
+}

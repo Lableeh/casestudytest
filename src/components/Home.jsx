@@ -1,10 +1,18 @@
 import React, { Component } from "react";
+import ApLogo from "../images/airplane1.png"
+import "../css/Home.css"
  
 class Home extends Component {
   render() {
     return (
-      <div>
-        <h2>Byaheng Langit</h2>
+      <div className="home-wrapper">
+        <div className="column">
+        <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'></link>
+        <img src={ApLogo} alt="Byaheng Langit" width="auto" height="auto"></img>
+        </div>
+        
+        <div className="column">
+        <h2>Byaheng Langit Airline</h2>
         <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pharetra sapien at enim faucibus ultricies a ut 
         risus. Praesent egestas malesuada enim vitae feugiat. Nam viverra est ut metus maximus, ut dapibus lectus lobortis.
@@ -24,6 +32,8 @@ class Home extends Component {
         </p>
  
         <p>Duis a turpis sed lacus dapibus elementum sed eu lectus.</p>
+        </div>
+        
       </div>
     );
   }

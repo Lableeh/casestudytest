@@ -5,9 +5,10 @@ import {
     HashRouter
   } from "react-router-dom";
   import Home from "./components/Home";
-  import Bookings from "./components/Bookings";
-  import Flights from "./components/Flights";
-  
+  import AddPassenger from "./components/AddPassenger";
+  import AddFlights from "./components/AddFlights";
+  import SearchFlights from "./components/SearchFlights"
+  import FlightManifest from ".//components/FlightManifest"
 
 class Main extends Component {
   render() {
@@ -16,16 +17,17 @@ class Main extends Component {
         <div>
         
           <ul className="header">
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/Bookings">Manage Booking</NavLink></li>
-            <li><NavLink to="/Flights">Flight Status</NavLink></li>
-            <li><NavLink to="/Flights">About Us</NavLink></li>
-            <li><NavLink to="/Flights">Contact Us</NavLink></li>          
+            <li><NavLink to="/Home">Home</NavLink></li>
+            <li><NavLink to="/AddPassenger">Add/Book Passenger</NavLink></li>
+            <li><NavLink to="/AddFlights">Add Flights</NavLink></li>
+            <li><NavLink to="/SearchFlights">Search Flights</NavLink></li>        
           </ul>
           <div className="content">
-            <Route exact path="/" component={Home}/>
-            <Route path="/Bookings" component={Bookings}/>
-            <Route path="/Flights" component={Flights}/>
+            <Route exact path="/Home" component={Home}/>
+            <Route path="/AddPassenger" component={AddPassenger}/>
+            <Route path="/AddFlights" component={AddFlights}/>
+            <Route path="/SearchFlights" component={SearchFlights}/>
+           
           </div>
         </div>
       </HashRouter>
