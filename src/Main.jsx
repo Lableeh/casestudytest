@@ -4,14 +4,15 @@ import {
     NavLink,
     HashRouter
   } from "react-router-dom";
-  import Home from "./components/Home";
-  import AddPassenger from "./components/AddPassenger";
-  import AddFlights from "./components/AddFlights";
-  import SearchFlights from "./components/SearchFlights"
-  import FlightManifest from ".//components/FlightManifest"
+import Home from "./components/Home";
+import AddPassenger from "./components/AddPassenger";
+import AddFlights from "./components/AddFlights";
+import SearchFlights from "./components/SearchFlights";
+
 
 class Main extends Component {
   render() {
+    
     return (
         <HashRouter>
         <div>

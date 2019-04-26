@@ -1,12 +1,92 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from 'prop-types';
 import "../css/AddPassenger.css";
+import { Tables } from '../components/Tables';
 
 class AddPassenger extends Component {
+  constructor(props) {  
+    super(props);
+    
+    this.state = {
+        usersList: [
+          {
+            firstName: 'Edubells',
+            middleName: 'pogi na',
+            lastName: 'lodi pa',
+            bDate: '11-11-11'
+          },
+          {
+            firstName: 'Rodabells',
+            middleName: 'ganda na',
+            lastName: 'sexy pa',
+            bDate: '22-11-11'
+          },
+        
+        ],
+        user: {
+          firstName: '',
+          middleName: '',
+          lastName: '',
+          bDate: ''
+        }
+    };
+
+    //this.handleAddUser2 = this.handleAddUser2.bind(this);
+  }
+
+  handleChangeInfo = e => {
+    const {name, value} = e.target;
+
+    this.setState((prevState) => ({
+      user: {
+        ...prevState.user,
+        [name]: value
+      }
+    }));
+  }
+
+  handleAddUser = e => {
+
+    let user = this.state.user;
+    let usersList = [...this.state.usersList];
+
+    usersList.push(user);
+
+    this.setState({usersList : usersList});
+
+    e.preventDefault();
+  }
+
+  handleAddUser2(e) {
+    let user = this.state.user;
+    let usersList = [...this.state.usersList];
+
+    usersList.push(user);
+
+    this.setState({usersList : usersList});
+
+    e.preventDefault();
+  }
+
+  deleteUser = rowIndex => {
+
+    let usersList = [...this.state.usersList];
+
+    usersList.splice(rowIndex, 1);
+
+    this.setState({usersList: usersList});
+  }
+
   render() {
+
     return (
+
+    
       <div className="body-wrapper">
+      
       <div className='form-wrapper'> 
+      <Fragment>
+     
         <form>
           <h2><center>Add Passenger</center></h2>
           <br/>
@@ -22,7 +102,7 @@ class AddPassenger extends Component {
             <div className="col-75">
               <input 
                 type="text" 
-                name="Fname" 
+                name="firstName" 
                 placeholder="Enter Your First Name" 
                 onChange={this.props.handleChangeInfo} 
               />
@@ -36,7 +116,7 @@ class AddPassenger extends Component {
             <div className="col-75">
               <input 
                 type="text" 
-                name="Mname" 
+                name="middleName" 
                 placeholder="Enter Your Middle Name" 
                 onChange={this.props.handleChangeInfo} 
               />
@@ -50,7 +130,7 @@ class AddPassenger extends Component {
             <div className="col-75">
               <input 
               type="text" 
-              name="Lname" 
+              name="lastName" 
               placeholder="Enter Your Last Name" 
               onChange={this.props.handleChangeInfo} 
               />
@@ -65,7 +145,7 @@ class AddPassenger extends Component {
             <div className="col-75">
               <input 
                 type="date" 
-                name="Bdate" 
+                name="bDate" 
                 placeholder="Enter Your Birthdate" 
                 onChange={this.props.handleChangeInfo} 
               />
@@ -79,10 +159,11 @@ class AddPassenger extends Component {
               <button type="button" className="button" onClick={this.props.handleAddUser}>Add</button>
             </div>
           </div>
-        </form>      
+        </form> 
+        </Fragment>     
       </div>
         
-        <div className="form-wrapper">
+        {/* <div className="form-wrapper">
           <form>
           <h2><center>Book Passenger</center></h2>
           <br/>
@@ -119,7 +200,7 @@ class AddPassenger extends Component {
               <label>Destination:</label>
             </div>
             <div className="col-75">
-              <input type="text" list="destination" placeholder="Enter Your Destination"/>
+              <input type="text" list="destination" placeholder="Enter Your Destination" onChange={this.props.handleChangeInfo}/>
                 <datalist id="destination">
                   <option value="Manila" />
                   <option value="Boracay (caticlan)" />
@@ -151,7 +232,7 @@ class AddPassenger extends Component {
               <label>Class:</label>
             </div>
             <div className="col-75">
-              <input type="text" list="class-type" placeholder="Select Class"/>
+              <input type="text" list="class-type" placeholder="Select Class" onChange={this.props.handleChangeInfo}/>
                 <datalist id="class-type">
                   <option value="First" />
                   <option value="Business Class" />
@@ -169,15 +250,18 @@ class AddPassenger extends Component {
           </div>
           
           </form>
-        </div>
+        </div> */}
+        <div className='table-panel'>
+            <Tables usersList={this.state.usersList} deleteUser={this.deleteUser} />
+          </div>
         </div>
     );
   }
 }
 
-{/* // Forms.propTypes = {
-//   handleChangeInfo: PropTypes.func,
-//   handleAddUser: PropTypes.func
-// } */}
+AddPassenger.propTypes = {
+  handleChangeInfo: PropTypes.func,
+  handleAddUser: PropTypes.func
+} 
 
 export default AddPassenger

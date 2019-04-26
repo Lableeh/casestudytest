@@ -1,6 +1,8 @@
 import React, {Component} from "react"
+import PropTypes from 'prop-types';
 import "../css/SearchFlight.css"
 import SearchBtn from "../images/search-icon.png"
+import AddFlights from "../components/AddFlights"
 
 class SearchFlights extends Component{
     render(){
@@ -59,12 +61,16 @@ class SearchFlights extends Component{
                             </tr>
                             
                     {/* {
-                        this.props.usersList.map((user, index) =>{
+                        this.props.flightList.map((flight, index) =>{
                             return (
                                 <tr className='user-table-row'>
-                                    <th className='user-table-cell'>{user.name}</th>
-                                    <th className='user-table-cell'>{user.age}</th>
-                                    <th className='user-table-cell'>{user.occupation}</th>
+                                    <th className='user-table-cell'>{flight.flightID}</th>
+                                    <th className='user-table-cell'>{flight.flightNum}</th>
+                                    <th className='user-table-cell'>{flight.origin}</th>
+                                    <th className='user-table-cell'>{flight.destination}</th>
+                                    <th className='user-table-cell'>{flight.departureDT}</th>
+                                    <th className='user-table-cell'>{flight.arrivalDT}</th>
+                                    <th className='user-table-cell'>{flight.fStatus}</th>
                                     <th className='user-table-cell'><button type='button' onClick={() => this.props.deleteUser(index)}>Delete User</button></th>
                                 </tr>
                             )
@@ -78,4 +84,8 @@ class SearchFlights extends Component{
     }
 }
 
+SearchFlights.propTypes = {
+    deleteUser: PropTypes.func,
+    usersList: PropTypes.func
+}
 export default SearchFlights
