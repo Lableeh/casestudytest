@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 
 body {
-    background-color: #17252A;
+    /* background-color: #17252A; */
+    background-color: #b9e2f5	;
     background-repeat: no-repeat;
     background-size: 100% auto;
     margin: 0;
@@ -19,7 +20,8 @@ body {
   ul.header {
     /*dARK BLUE #162038*/
     /*semi dark blue #1B2A47*/
-    background-color:	#008080;
+    /* background-color:	#008080; */
+    background-color: #0e80b4;
     padding: 0;
   }
   ul.header li a {
@@ -52,8 +54,8 @@ text-align: center;
   }
 
   li a:hover:not(.active) {
-    background-color:#66b2b2;
+    background-color:#b9e2f5	;
   }
   .active {
-    background-color:#004c4c;
+    background-color: #84cdee;
   }

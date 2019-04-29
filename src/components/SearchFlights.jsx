@@ -1,13 +1,11 @@
 import React, {Component} from "react"
 import PropTypes from 'prop-types';
-import "../css/SearchFlight.css"
-import SearchBtn from "../images/search-icon.png"
-import AddFlights from "../components/AddFlights"
+import "../css/SearchFlight.css";
 
 class SearchFlights extends Component{
     render(){
-        return(
-            <div className="search-container">
+        return(  
+            <div className="search-form-wrapper">
                 <form className="search-form">
                     <center>
                     <input type="text" placeholder="Search.." name="search"/>
@@ -30,52 +28,36 @@ class SearchFlights extends Component{
                 </form>
 
                 <div className="search-display-container">
-                    <table className='user-table'>
+                    <table className='search-flight-table'>
                         <tbody>
-                            <tr className='user-table-head'>
-                                <th className='user-table-cell'>FLIGHT ID</th>
-                                <th className='user-table-cell'>FLIGHT NUMBER</th>
-                                <th className='user-table-cell'>ORIGIN</th>
-                                <th className='user-table-cell'>DESTINATION</th>
-                                <th className='user-table-cell'>DEPARTURE DATE/TIME</th>
-                                <th className='user-table-cell'>ARRIVAL DATE/TIME</th>
-                                <th className='user-table-cell'>STATUS</th>
+                            <tr className='search-flight-table-head'>
+                                <th className='search-flight-table-cell'>FLIGHT ID</th>
+                                <th className='search-flight-table-cell'>FLIGHT NUMBER</th>
+                                <th className='search-flight-table-cell'>ORIGIN</th>
+                                <th className='search-flight-table-cell'>DESTINATION</th>
+                                <th className='search-flight-table-cell'>DEPARTURE DATE/TIME</th>
+                                <th className='search-flight-table-cell'>ARRIVAL DATE/TIME</th>
+                                <th className='search-flight-table-cell'>STATUS</th>
                             </tr>
-                            <tr className='user-table-row'>
-                                <th className='user-table-cell'>F0011</th>
-                                <th className='user-table-cell'>001122</th>
-                                <th className='user-table-cell'>Manila</th>
-                                <th className='user-table-cell'>Tacloban</th>
-                                <th className='user-table-cell'>23-04-2019 (9:00AM)</th>
-                                <th className='user-table-cell'>23-04-2019 (1:00PM)</th>
-                                <th className='user-table-cell'>Ready</th>
+                            <tr className='search-flight-table-row'>
+                                <th className='search-flight-table-cell'>F0011</th>
+                                <th className='search-flight-table-cell'>001122</th>
+                                <th className='search-flight-table-cell'>Manila</th>
+                                <th className='search-flight-table-cell'>Tacloban</th>
+                                <th className='search-flight-table-cell'>23-04-2019 (9:00AM)</th>
+                                <th className='search-flight-table-cell'>23-04-2019 (1:00PM)</th>
+                                <th className='search-flight-table-cell'>Ready</th>
                             </tr>
-                            <tr className='user-table-row'>
-                                <th className='user-table-cell'>F0012</th>
-                                <th className='user-table-cell'>002233</th>
-                                <th className='user-table-cell'>Manila</th>
-                                <th className='user-table-cell'>Cebu</th>
-                                <th className='user-table-cell'>23-04-2019 (9:00AM)</th>
-                                <th className='user-table-cell'>23-04-2019 (1:00PM)</th>
-                                <th className='user-table-cell'>Ready</th>
+                            <tr className='search-flight-table-row'>
+                                <th className='search-flight-table-cell'>F0012</th>
+                                <th className='search-flight-table-cell'>002233</th>
+                                <th className='search-flight-table-cell'>Manila</th>
+                                <th className='search-flight-table-cell'>Cebu</th>
+                                <th className='search-flight-table-cell'>23-04-2019 (9:00AM)</th>
+                                <th className='search-flight-table-cell'>23-04-2019 (1:00PM)</th>
+                                <th className='search-flight-table-cell'>Ready</th>
                             </tr>
-                            
-                    {/* {
-                        this.props.flightList.map((flight, index) =>{
-                            return (
-                                <tr className='user-table-row'>
-                                    <th className='user-table-cell'>{flight.flightID}</th>
-                                    <th className='user-table-cell'>{flight.flightNum}</th>
-                                    <th className='user-table-cell'>{flight.origin}</th>
-                                    <th className='user-table-cell'>{flight.destination}</th>
-                                    <th className='user-table-cell'>{flight.departureDT}</th>
-                                    <th className='user-table-cell'>{flight.arrivalDT}</th>
-                                    <th className='user-table-cell'>{flight.fStatus}</th>
-                                    <th className='user-table-cell'><button type='button' onClick={() => this.props.deleteUser(index)}>Delete User</button></th>
-                                </tr>
-                            )
-                    })
-                    } */}
+
                 </tbody>
                 </table>
                 </div>

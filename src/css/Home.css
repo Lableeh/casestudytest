@@ -11,6 +11,9 @@
 
 .home-wrapper{
     color: white;
+    background-image: url(../images/246849-P3VW47-211.jpg);
+    margin-top: -3%;
+    margin-left: -2%;
 }
 
 p{
@@ -19,3 +22,7 @@ p{
 h2{
     font-family: 'Sofia';font-size: 22px;
 }
+
+/* body{
+    background-image: url(../images/246849-P3VW47-211.jpg);
+} */
