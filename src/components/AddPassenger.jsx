@@ -1,80 +1,79 @@
 import React, { Component, Fragment } from "react";
 import "../css/AddPassenger.css";
 import  AddPassengerTables  from './AddPassengerTables';
-import AddPassengerforms from "../components/AddPassengerforms"
+import AddPassengerforms from "../components/AddPassengerforms";
+import axios from "axios";
 
 class AddPassenger extends Component {
   constructor(props) {  
     super(props);
     
     this.state = {
-        usersList: [
-          {
-            firstName: 'Avril',
-            middleName: 'Ramona',
-            lastName: 'Lavign',
-            bDate: '09-24-1984'
-          },
-          {
-            firstName: 'Billie',
-            middleName: 'Joe',
-            lastName: 'Armstrong',
-            bDate: '02-17-1972'
-          },
-        
-        ],
-        user: {
+        passengerList: [],
+        passenger: {
+          id: '',
           firstName: '',
           middleName: '',
           lastName: '',
-          bDate: ''
+          birthDate: ''
         }
     };
-
-    //this.handleAddUser2 = this.handleAddUser2.bind(this);
   }
 
-  handleChangeInfo = e => {
-    const {name, value} = e.target;
+// (GET METHOD) GET PASSENGER DATA
+getPassengers(){
+  axios.get(`http://localhost:8080/restsample01/rest/users`)
+    .then(res => {
+        const passengerList = res.data;
+        this.setState({passengerList:passengerList});
+      })
+}
 
-    this.setState((prevState) => ({
-      user: {
-        ...prevState.user,
-        [name]: value
-      }
+componentDidMount(){
+  this.getPassengers();
+}
+
+handleChangeInfo = e => {
+  const {name, value} = e.target;
+  this.setState((prevState) => ({
+    passenger: {
+      ...prevState.passenger,
+      [name]: value
+    }
     }));
   }
 
-  handleAddUser = e => {
-
-    let user = this.state.user;
-    let usersList = [...this.state.usersList];
-
-    usersList.push(user);
-
-    this.setState({usersList : usersList});
-
+  // (POST METHOD) ADD PASSENGER
+  handleAddPassenger = e => {
+    let passenger = this.state.passenger;
+    let passengerList = [...this.state.passengerList];
+    passengerList.push(passenger);
+    this.setState({passengerList : passengerList});
     e.preventDefault();
+    console.log("post");
+    console.log(passenger);
+    let headers = {
+      'Content-Type': 'application/json',
+    }
+
+    axios.post(`http://localhost:8080/restsample01/rest/users`,passenger, {headers:headers})
+    .then(res =>{
+        console.log(res);
+        console.log(res.data);
+    })
   }
 
-  handleAddUser2(e) {
-    let user = this.state.user;
-    let usersList = [...this.state.usersList];
+  // (DELETE METHOD)
+  deletePassenger = rowIndex => {
+    let passengerList = [...this.state.passengerList];
+    passengerList.splice(rowIndex, 1);
+    this.setState({passengerList: passengerList});
 
-    usersList.push(user);
-
-    this.setState({usersList : usersList});
-
-    e.preventDefault();
-  }
-
-  deleteUser = rowIndex => {
-
-    let usersList = [...this.state.usersList];
-
-    usersList.splice(rowIndex, 1);
-
-    this.setState({usersList: usersList});
+    axios.delete(`http://localhost:8080/restsample01/rest/users/${rowIndex}`)
+    .then(res =>{
+        console.log(res);
+        console.log(res.data);
+    })
   }
 
   render() {
@@ -89,7 +88,7 @@ class AddPassenger extends Component {
           <div className='forms-panel'>
             <AddPassengerforms
               handleChangeInfo={this.handleChangeInfo} 
-              handleAddUser={this.handleAddUser} 
+              handleAddPassenger={this.handleAddPassenger} 
             />
           </div>
           
@@ -176,7 +175,7 @@ class AddPassenger extends Component {
             <div className="col-25">
             </div>
             <div className="col-75">
-              <button type="button" className="button" onClick={this.props.handleAddUser}>Book</button>
+              <button type="button" className="button" onClick={this.props.handleAddPassenger}>Book</button>
             </div>
           </div>
           
@@ -187,7 +186,7 @@ class AddPassenger extends Component {
 
           {/* Display Passenger Table */}
           <div className='table-panel'>
-            <AddPassengerTables usersList={this.state.usersList} deleteUser={this.deleteUser} />
+            <AddPassengerTables passengerList={this.state.passengerList} deletePassenger={this.deletePassenger} />
           </div>
         
         

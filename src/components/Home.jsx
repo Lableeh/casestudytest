@@ -7,7 +7,7 @@ class Home extends Component {
   render() {
     return (
       <div className="home-wrapper">
-       <img src={bg} alt="Byaheng Langit" width="1355px" height="600px"></img>
+       <img src={bg} alt="Byaheng Langit" width="1355px" height="600px" className="bg-image"></img>
         
       </div>
     );

@@ -7,6 +7,7 @@
     float: left;
     height: 400px;
     margin-left: 3%;
+    position: relative;
 }
 .body-wrapper:after{
 	display:table;
@@ -18,6 +19,11 @@
   box-sizing: border-box;
 }
 
+.mUser{
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
 input[type=text], select, textarea {
   width: 125%;
   padding: 12px;

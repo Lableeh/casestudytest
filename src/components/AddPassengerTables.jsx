@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import '../css/AddPassenger.css';
 
 class AddPassengerTables extends Component{
+    
     render(){
         return(
             <Fragment>
@@ -10,6 +11,7 @@ class AddPassengerTables extends Component{
                 <table className='passenger-table'>
                 <tbody>
                     <tr className='passenger-table-head'>
+                        <th className='passenger-table-cell'>PASSENGER ID</th>
                         <th className='passenger-table-cell'>FIRST NAME</th>
                         <th className='passenger-table-cell'>MIDDLE NAME</th>
                         <th className='passenger-table-cell'>LAST NAME</th>
@@ -17,14 +19,15 @@ class AddPassengerTables extends Component{
                         <th className='passenger-table-cell'>ACTION</th>
                     </tr>
                     {
-                        this.props.usersList.map((user, index) =>{
+                        this.props.passengerList.map((passenger, id) =>{
                             return (
-                                <tr className='passenger-table-row'>
-                                    <th className='passenger-table-cell'>{user.firstName}</th>
-                                    <th className='passenger-table-cell'>{user.middleName}</th>
-                                    <th className='passenger-table-cell'>{user.lastName}</th>
-                                    <th className='passenger-table-cell'>{user.bDate}</th>
-                                    <th className='passenger-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deleteUser(index)}>Delete User</button></th>
+                                <tr className='passenger-table-row' key={id}>
+                                    <th className='passenger-table-cell'>{id}</th>
+                                    <th className='passenger-table-cell'>{passenger.firstName}</th>
+                                    <th className='passenger-table-cell'>{passenger.middleName}</th>
+                                    <th className='passenger-table-cell'>{passenger.lastName}</th>
+                                    <th className='passenger-table-cell'>{passenger.birthDate}</th>
+                                    <th className='passenger-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deletePassenger(id)}>Delete</button></th>
                                 </tr>
                             )
                     })
@@ -41,8 +44,8 @@ class AddPassengerTables extends Component{
 }
 
 AddPassengerTables.propTypes = {
-    deleteUser: PropTypes.func,
-    userList: PropTypes.func
+    deletePassenger: PropTypes.func,
+    passengerList: PropTypes.func
 }
 
 export default AddPassengerTables

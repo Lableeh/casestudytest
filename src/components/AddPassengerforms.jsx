@@ -1,7 +1,7 @@
 import React , {Component} from "react"
 import PropTypes from 'prop-types';
 import "../css/AddPassenger.css"
-
+import mUser from '../images/male_user.png'
 
 class AddPassengerforms extends Component{
     render(){
@@ -14,7 +14,8 @@ class AddPassengerforms extends Component{
           <br/>
           <div className="row">
             <div className="col-25">
-              <p><bold>Passenger ID: C0011</bold></p>
+              <p>.</p>
+              <img src={mUser} alt="User Icon" width="110px" height="110px" className="mUser"></img>
             </div>
           </div>
           <div className="row">
@@ -67,7 +68,7 @@ class AddPassengerforms extends Component{
             <div className="col-75">
               <input 
                 type="date" 
-                name="bDate" 
+                name="birthDate" 
                 placeholder="Enter Your Birthdate" 
                 onChange={this.props.handleChangeInfo} 
               />
@@ -81,7 +82,7 @@ class AddPassengerforms extends Component{
               <button 
                 type="button" 
                 className="button" 
-                onClick={this.props.handleAddUser}>Add
+                onClick={this.props.handleAddPassenger}>Add
               </button>
             </div>
           </div>
@@ -94,7 +95,7 @@ class AddPassengerforms extends Component{
 
 AddPassengerforms.propTypes = {
     handleChangeInfo: PropTypes.func,
-    handleAddUser: PropTypes.func
+    handleAddPassenger: PropTypes.func
 }
 
 export default AddPassengerforms
