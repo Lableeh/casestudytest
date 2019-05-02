@@ -31,7 +31,7 @@ class AddFlightsforms extends Component{
                 <input 
                   type="text" 
                   list="destination" 
-                  name="origin"
+                  name="flightOrigin"
                   placeholder="Enter Your Origin" 
                   onChange={this.props.handleChangeFlightInfo}
                 />
@@ -55,7 +55,7 @@ class AddFlightsforms extends Component{
                 <input 
                   type="text" 
                   list="destination" 
-                  name="destination" 
+                  name="flightDestination" 
                   placeholder="Enter your destination" 
                   onChange={this.props.handleChangeFlightInfo}
                 />
@@ -77,8 +77,8 @@ class AddFlightsforms extends Component{
               </div>
               <div className="col-75">
                 <input
-                  type="date"
-                  name="departureDT"
+                  type="datetime-local"
+                  name="flightDepartureDT"
                   placeholder="Enter Your Departure Date and Time"
                   onChange={this.props.handleChangeFlightInfo}
                 />
@@ -92,8 +92,8 @@ class AddFlightsforms extends Component{
               </div>
               <div className="col-75">
                 <input
-                  type="date"
-                  name="arrivalDT"
+                  type="datetime-local"
+                  name="flightArrivalDT"
                   placeholder="Enter Your Arrival Date and Time"
                   onChange={this.props.handleChangeFlightInfo}
                 />
@@ -106,11 +106,23 @@ class AddFlightsforms extends Component{
               </div>
               <div className="col-75">
                 <input
-                  type="text"
-                  name="fStatus"
-                  placeholder="Enter Your Flight Status"
+                  type="text" 
+                  list="flightStatus" 
+                  name="flightStatus" 
+                  placeholder="Enter Flight Status" 
                   onChange={this.props.handleChangeFlightInfo}
                 />
+                <datalist id="flightStatus">
+                  <option value="Cancelled" />
+                  <option value="Scheduled" />
+                  <option value="Gate Open" />
+                  <option value="Boarding" />
+                  <option value="Gate Closed" />
+                  <option value="On Time" />
+                  <option value="Delayed" />
+                  <option value="Early" />
+                  <option value="Arrived" />
+                </datalist>
               </div>
             </div>
             <div className="row">
@@ -118,7 +130,12 @@ class AddFlightsforms extends Component{
 
               </div>
               <div className="col-75">
-                <button type="button" className="book-button" onClick={this.props.handleAddFlight}>Add</button>
+                <button 
+                  type="button" 
+                  className="book-button" 
+                  onClick={this.props.handleAddFlight}>
+                  Add
+                </button>
               </div>
             </div>
           </form>

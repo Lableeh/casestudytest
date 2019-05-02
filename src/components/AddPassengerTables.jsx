@@ -22,7 +22,7 @@ class AddPassengerTables extends Component{
                         this.props.passengerList.map((passenger, id) =>{
                             return (
                                 <tr className='passenger-table-row' key={id}>
-                                    <th className='passenger-table-cell'>{id}</th>
+                                    <th className='passenger-table-cell'>{passenger.id}</th>
                                     <th className='passenger-table-cell'>{passenger.firstName}</th>
                                     <th className='passenger-table-cell'>{passenger.middleName}</th>
                                     <th className='passenger-table-cell'>{passenger.lastName}</th>

@@ -3,7 +3,7 @@ import "../css/AddPassenger.css";
 import  AddPassengerTables  from './AddPassengerTables';
 import AddPassengerforms from "../components/AddPassengerforms";
 import axios from "axios";
-
+import stewardess from "../images/stewardess.jpg"
 class AddPassenger extends Component {
   constructor(props) {  
     super(props);
@@ -92,94 +92,9 @@ handleChangeInfo = e => {
             />
           </div>
           
-          {/* Book Passenger */}
+ 
           <div className="passenger-form-wrapper">
-          <form>
-          <h2><center>Book Passenger</center></h2>
-          <br/>
-            <div className="row">
-              <div className="col-25">
-                <label>Flight ID: </label>
-              </div>
-            <div className="col-75">
-              <input 
-                type="text" 
-                name="FlightID" 
-                placeholder="Enter Your Flight ID" 
-                onChange={this.props.handleChangeInfo} 
-              />
-            </div>
-          </div>
-
-          <div className="row">
-              <div className="col-25">
-                <label>Passenger ID: </label>
-              </div>
-            <div className="col-75">
-              <input 
-                type="text" 
-                name="PassengerID" 
-                placeholder="Enter Your Passenger ID" 
-                onChange={this.props.handleChangeInfo} 
-              />
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-25">
-              <label>Destination:</label>
-            </div>
-            <div className="col-75">
-              <input type="text" list="destination" placeholder="Enter Your Destination" onChange={this.props.handleChangeInfo}/>
-                <datalist id="destination">
-                  <option value="Manila" />
-                  <option value="Boracay (caticlan)" />
-                  <option value="Cebu" />
-                  <option value="Coron" />
-                  <option value="Davao" />
-                  <option value="Puerta Prinsesa" />
-                  <option value="Surigao" />
-                </datalist>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-25">
-              <label>Flight Date/Time: </label>
-            </div>
-            <div className="col-75">
-              <input 
-                type="date" 
-                name="FlightDT" 
-                placeholder="Enter Flight Date and Time" 
-                onChange={this.props.handleChangeInfo} 
-              />
-            </div>    
-          </div>
-
-          <div className="row">
-            <div className="col-25">
-              <label>Class:</label>
-            </div>
-            <div className="col-75">
-              <input type="text" list="class-type" placeholder="Select Class" onChange={this.props.handleChangeInfo}/>
-                <datalist id="class-type">
-                  <option value="First" />
-                  <option value="Business Class" />
-                  <option value="Economy" />
-                </datalist>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-25">
-            </div>
-            <div className="col-75">
-              <button type="button" className="button" onClick={this.props.handleAddPassenger}>Book</button>
-            </div>
-          </div>
-          
-          </form>
+         <img src={stewardess} alt="Stewardess" width="550px" height="360px" className="stewardess"></img>
         </div>
       
           <br/>

@@ -11,23 +11,27 @@ class AddFlightsTables extends Component{
                 <table className='flight-table'>
                 <tbody>
                     <tr className='flight-table-head'>
+                        <th className='flight-table-cell'>FLIGHT ID</th>
                         <th className='flight-table-cell'>FLIGHT NUMBER</th>
                         <th className='flight-table-cell'>ORIGIN</th>
                         <th className='flight-table-cell'>DESTINATION</th>
                         <th className='flight-table-cell'>DEPARTURE DATE/TIME</th>
                         <th className='flight-table-cell'>ARRIVAL DATE/TIME</th>
                         <th className='flight-table-cell'>STATUS</th>
+                        <th className='flight-table-cell'>ACTION</th>
                     </tr>
                     {
                         this.props.flightList.map((flight, index) =>{
                             return (
-                                <tr className='flight-table-row'>
+                                <tr className='flight-table-row' key={index}>
+                                    <th className='flight-table-cell'>{index}</th>
                                     <th className='flight-table-cell'>{flight.flightNum}</th>
-                                    <th className='flight-table-cell'>{flight.origin}</th>
-                                    <th className='flight-table-cell'>{flight.destination}</th>
-                                    <th className='flight-table-cell'>{flight.departureDT}</th>
-                                    <th className='flight-table-cell'>{flight.arrivalDT}</th>
-                                    <th className='flight-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deleteUser(index)}>Delete User</button></th>
+                                    <th className='flight-table-cell'>{flight.flightOrigin}</th>
+                                    <th className='flight-table-cell'>{flight.flightDestination}</th>
+                                    <th className='flight-table-cell'>{flight.flightDepartureDT}</th>
+                                    <th className='flight-table-cell'>{flight.flightArrivalDT}</th>
+                                    <th className='flight-table-cell'>{flight.flightStatus}</th>
+                                    <th className='flight-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deleteFlight(index)}>Delete Flight</button></th>
                                 </tr>
                             )
                     })
@@ -43,7 +47,7 @@ class AddFlightsTables extends Component{
 }
 
 AddFlightsTables.propTypes = {
-    deleteUser: PropTypes.func,
+    deleteFlight: PropTypes.func,
     flightList: PropTypes.func
 }
 

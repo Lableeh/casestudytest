@@ -10,7 +10,7 @@ class AddPassengerforms extends Component{
       
      
         <form>
-          <h2><center>Add Passenger</center></h2>
+          <h2><center>Passenger Information</center></h2>
           <br/>
           <div className="row">
             <div className="col-25">

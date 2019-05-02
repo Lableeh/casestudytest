@@ -19,8 +19,8 @@ class Main extends Component {
         
           <ul className="header">
             <li><NavLink to="/Home">Home</NavLink></li>
-            <li><NavLink to="/AddPassenger">Add/Book Passenger</NavLink></li>
-            <li><NavLink to="/AddFlights">Add Flights</NavLink></li>
+            <li><NavLink to="/AddPassenger">Add Passenger</NavLink></li>
+            <li><NavLink to="/AddFlights">Add/Book Flights</NavLink></li>
             <li><NavLink to="/SearchFlights">Search Flights</NavLink></li>        
           </ul>
           <div className="content">
