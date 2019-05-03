@@ -103,6 +103,32 @@
     border-radius: 15px;
     width: 90%;
   }
+
+  .edit-btn {
+    -moz-box-shadow:inset 0px 39px 0px -24px #9ee45d;
+    -webkit-box-shadow:inset 0px 39px 0px -24px #9ee45d;
+    box-shadow:inset 0px 39px 0px -24px #9ee45d;
+    background-color:#8cce4f;
+    -moz-border-radius:4px;
+    -webkit-border-radius:4px;
+    border-radius:4px;
+    border:1px solid #ffffff;
+    display:inline-block;
+    cursor:pointer;
+    color:black;
+    
+    font-size:15px;
+    padding:6px 15px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #9ee45d;
+  }
+  .edit-btn:hover {
+    background-color:#9ee45d;
+  }
+  .edit-btn:active {
+    position:relative;
+    top:1px;
+  }
   
   .book-button:hover, .search-button:hover {background-color: #84cdee}
 

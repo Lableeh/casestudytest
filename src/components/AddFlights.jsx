@@ -80,6 +80,20 @@ componentDidMount(){
     })
   }
 
+  // (DELETE METHOD)
+  editFlight = rowIndex => {
+    let flightList = [...this.state.flightList];
+    flightList.splice(rowIndex, 1);
+    this.setState({flightList: flightList});
+
+    axios.put(`http://localhost:8080/restsample01/rest/flights/${rowIndex}`)
+    
+    .then(res =>{
+        console.log(res);
+        console.log(res.data);
+    })
+  }
+
 
   render() {
     return (

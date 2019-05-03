@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import "../css/AddFlight.css";
-
+import Popup from "reactjs-popup";
 class AddFlightsTables extends Component{
+    
     render(){
         return(
     
@@ -19,6 +20,7 @@ class AddFlightsTables extends Component{
                         <th className='flight-table-cell'>ARRIVAL DATE/TIME</th>
                         <th className='flight-table-cell'>STATUS</th>
                         <th className='flight-table-cell'>ACTION</th>
+                        <th className='flight-table-cell'>ACTION</th>
                     </tr>
                     {
                         this.props.flightList.map((flight, index) =>{
@@ -31,14 +33,16 @@ class AddFlightsTables extends Component{
                                     <th className='flight-table-cell'>{flight.flightDepartureDT}</th>
                                     <th className='flight-table-cell'>{flight.flightArrivalDT}</th>
                                     <th className='flight-table-cell'>{flight.flightStatus}</th>
-                                    <th className='flight-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deleteFlight(index)}>Delete Flight</button></th>
+                            <th className='flight-table-cell'><button type='button' className="edit-btn" onClick={this.openPopupbox}>Edit</button></th>
+                            <th className='flight-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deleteFlight(index)}>Delete</button></th>
+                           
                                 </tr>
                             )
                     })
                     }
                 </tbody>
                 </table>
-                
+              
                 </div>
             </Fragment>
     
@@ -49,6 +53,7 @@ class AddFlightsTables extends Component{
 AddFlightsTables.propTypes = {
     deleteFlight: PropTypes.func,
     flightList: PropTypes.func
+    
 }
 
 export default AddFlightsTables
