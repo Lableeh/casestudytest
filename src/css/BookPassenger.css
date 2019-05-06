@@ -1,0 +1,83 @@
+.bookPassenger-form-wrapper{
+    border-radius: 5px;
+    background-color: #edf7fc		;
+    padding: 20px;
+    width: 45%;
+    height: 250px;
+    margin-left: 28%;
+    margin-bottom: 3%;
+  }
+
+  input[type=text], select, textarea {
+    width: 90%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-right: 5%;
+  }
+  
+  input[type=date]{
+      width: 90%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      
+    }
+    input[type=datetime-local]{
+      width: 90%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      
+    }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+/*START OF PASSENGER TABLE CSS*/
+.bookpassenger-display-container{
+    border-radius: 5px;
+    padding: 20px;
+    width:100%;
+   
+}
+
+.bookpassenger-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+.bookpassenger-table td, .bookpassenger-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+.bookpassenger-table tr{background-color: #f2f2f2;}
+ /*Original alternate row code .user-table tr:nth-child(even){background-color: #f2f2f2;}*/ 
+.bookflight-table tr:hover {background-color: #ddd;}
+  
+.bookpassenger-table-head th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color:#005b96;
+    color: white;
+}

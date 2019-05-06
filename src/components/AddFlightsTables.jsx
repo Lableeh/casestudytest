@@ -26,7 +26,7 @@ class AddFlightsTables extends Component{
                         this.props.flightList.map((flight, index) =>{
                             return (
                                 <tr className='flight-table-row' key={index}>
-                                    <th className='flight-table-cell'>{index}</th>
+                                    <th className='flight-table-cell'>{flight.flightId}</th>
                                     <th className='flight-table-cell'>{flight.flightNum}</th>
                                     <th className='flight-table-cell'>{flight.flightOrigin}</th>
                                     <th className='flight-table-cell'>{flight.flightDestination}</th>

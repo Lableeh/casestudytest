@@ -23,7 +23,7 @@
       
 }
 
-.search-form{
+.search-bar{
   margin-bottom: 5%;
 }
 
@@ -60,45 +60,39 @@
       color: black;
   }
 
-  /* table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+  .search-icon{
+    position: absolute;
+    margin-top: -5px;
+    margin-left: -65px;
   }
-  
-  td, th {
-    border: 1px solid black;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: black;
-  }
-  
-  .table-panel {
-    margin-bottom: 40px;
-  } */
 
-.search-flight-table {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-.search-flight-table td, .search-flight-table th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-.search-flight-table tr{background-color: #f2f2f2;}
- /*Original alternate row code .user-table tr:nth-child(even){background-color: #f2f2f2;}*/ 
-.search-flight-table tr:hover {background-color: #ddd;}
-  
-.search-flight-table-head th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color:#005b96;
-    color: white;
+  /*START OF FLIGHT TABLE CSS*/
+.searchFlight-display-container{
+  border-radius: 5px;
+  padding: 20px;
+  width:100%;
+
+}
+
+.searchFlight-table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.searchFlight-table td, .searchFlight-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.searchFlight-table tr{background-color: #f2f2f2;}
+/*Original alternate row code .user-table tr:nth-child(even){background-color: #f2f2f2;}*/ 
+.searchFlight-table tr:hover {background-color: #ddd;}
+
+.searchFlight-table-head th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color:#005b96;
+  color: white;
 }

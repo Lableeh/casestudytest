@@ -1,35 +1,56 @@
 import React, { Component, Fragment } from "react"
 import PropTypes from 'prop-types';
 import "../css/SearchFlight.css";
-import AddFlightsTables from './AddFlightsTables'
+import searchIcon from "../images/search-icon.png"
 import axios from 'axios'
 
-const people = [
-    {
-        id: 1,
-        first: "Sarah",
-        last: "johnson",
-        age: 25
-    },
-    {
-        id: 2,
-        first: "Caldwell",
-        last: "Thompson",
-        age: 32
-    },
-    {
-        id: 3,
-        first: "hart",
-        last: "Maynard",
-        age: 12
-    }
-]
+
+// function searchingFor(term){
+//     return function(x){
+//         return x.flightId.toString().toLowerCase().includes(term.toString().toLowerCase()) || !term;
+//     }
+// }
 
 function searchingFor(term){
     return function(x){
-        return x.flightDestination.toString().toLowerCase().includes(term.toString().toLowerCase()) || !term;
+        return x.flightId.toString().toLowerCase().includes(term.toString().toLowerCase()) || 
+        x.flightNum.toString().toLowerCase().includes(term.toString().toLowerCase()) ||
+        x.flightOrigin.toString().toLowerCase().includes(term.toString().toLowerCase()) ||
+        x.flightDestination.toString().toLowerCase().includes(term.toString().toLowerCase()) ||
+        x.flightDepartureDT.toString().toLowerCase().includes(term.toString().toLowerCase()) ||
+        x.flightArrivalDT.toString().toLowerCase().includes(term.toString().toLowerCase()) ||
+        x.flightStatus.toString().toLowerCase().includes(term.toString().toLowerCase());
     }
 }
+
+// function searchingFor(term){
+//     return function(x,searchBy){
+//        if(searchBy == "Flight Id"){
+//         return  x.flightId.toString().toLowerCase().includes(term.toString().toLowerCase());
+//        }
+//        else if(searchBy == "Flight Number"){
+//         return  x.flightNum.toString().toLowerCase().includes(term.toString().toLowerCase()) ;
+//        }
+//        else if(searchBy == "Flight Origin"){
+//         return x.flightOrigin.toString().toLowerCase().includes(term.toString().toLowerCase())
+//        }
+//        else if(searchBy == "Flight Destination"){
+//         x.flightDestination.toString().toLowerCase().includes(term.toString().toLowerCase())
+//        }
+//        else if(searchBy == "Flight Departure Date/Time"){
+//         x.flightDepartureDT.toString().toLowerCase().includes(term.toString().toLowerCase())
+//        }
+//        else if(searchBy == "Flight Arrivale Date/Time"){
+//         x.flightArrivalDT.toString().toLowerCase().includes(term.toString().toLowerCase())
+//        }
+//        else if(searchBy == "Flight Status"){
+//         x.flightStatus.toString().toLowerCase().includes(term.toString().toLowerCase());
+//        }
+       
+//     }
+// }
+
+
 
 class SearchFlights extends Component {
   
@@ -38,7 +59,6 @@ class SearchFlights extends Component {
 
         this.state = {
             flightList: [],
-            people : people,
             term: ''
         };
 
@@ -47,6 +67,7 @@ class SearchFlights extends Component {
 
     searchHandler(event){
         this.setState({ term: event.target.value})
+
     }
     
     // (GET METHOD) GET FLIGHT DATA
@@ -76,120 +97,69 @@ class SearchFlights extends Component {
     }
 
     render() {
-        const {term, flightList} = this.state;
+        const {term} = this.state;
         return (
             <Fragment>
             <div className="search-form-wrapper">  
-                {/* <form className="search-form">
-                    <center>
-                        <input 
-                            type="text" 
-                            placeholder="Search.." 
-                            name="search" 
-                            className='react-search-field-input'
-                          
-                        />
-                        <button 
-                            type="submit" 
-                            className="search-btn"
-                           >Search
-                        </button>
-      
-                    </center>
-                </form> */}
-
-   
-
-                    {/* Display Flight Table */}
-                    {/* <div className='flight-table-panel'>
-                        <AddFlightsTables flightList={this.state.flightList} deleteFlight={this.deleteFlight}/>
-                    </div> */}
                     <center>
                         <form>
                             <input 
                                 type = "text"
+                                placeholder = "Search"
                                 onChange = {this.searchHandler}
                                 value={term}
+                                className = "search-bar"
                             />
-                            
+                            <img src={searchIcon} alt="search-icon" width="50px" height="50px" className="search-icon"></img>
+                            {/* <input type="text" list="searchBy" placeholder=""/>
+                                <datalist id="searchBy">
+                                <option value="Flight Id" />
+                                <option value="Flight Number" />
+                                <option value="Flight Origin" />
+                                <option value="Flight Destination" />
+                                <option value="Flight Departure Date/Time" />
+                                <option value="Flight Arrival Date/Time" />
+                                <option value="Flight Status" />
+                            </datalist> */}
                         </form>
-
-                        <table className = "searchFlight-table">
-                            <tbody>
-                            <tr className='flight-table-head'>
-                                <th className='flight-table-cell'>FLIGHT ID</th>
-                                <th className='flight-table-cell'>FLIGHT NUMBER</th>
-                                <th className='flight-table-cell'>ORIGIN</th>
-                                <th className='flight-table-cell'>DESTINATION</th>
-                                <th className='flight-table-cell'>DEPARTURE DATE/TIME</th>
-                                <th className='flight-table-cell'>ARRIVAL DATE/TIME</th>
-                                <th className='flight-table-cell'>STATUS</th>
-                                <th className='flight-table-cell'>ACTION</th>
-                                <th className='flight-table-cell'>ACTION</th>
-                            </tr>
-                            <tr className='flight-table-row'>
+                    </center>  
+                        
+            <div className = "searchFlight-display-container">
+                <table className = "searchFlight-table">
+                    <tbody>
+                        <tr className='flight-table-head'>
+                            <th className='flight-table-cell'>FLIGHT ID</th>
+                            <th className='flight-table-cell'>FLIGHT NUMBER</th>
+                            <th className='flight-table-cell'>ORIGIN</th>
+                            <th className='flight-table-cell'>DESTINATION</th>
+                            <th className='flight-table-cell'>DEPARTURE DATE/TIME</th>
+                            <th className='flight-table-cell'>ARRIVAL DATE/TIME</th>
+                            <th className='flight-table-cell'>STATUS</th>
+                            <th className='flight-table-cell'>ACTION</th>
+                            <th className='flight-table-cell'>ACTION</th>
+                        </tr>                           
                             {
-                                this.state.flightList.filter(searchingFor(term)).map(flight =>
-                                    // <th className='flight-table-cell'>{flight.flightId}</th>
-                                    // <th className='flight-table-cell'>{flight.flightNum}</th>
-                                    // <th className='flight-table-cell'>{flight.flightOrigin}</th>
-                                    // <th className='flight-table-cell'>{flight.flightDestination}</th>
-                                    // <th className='flight-table-cell'>{flight.flightDepartureDT}</th>
-                                    // <th className='flight-table-cell'>{flight.flightArrivalDT}</th>
-                                    // <th className='flight-table-cell'>{flight.flightStatus}</th>
-                                <div key={flight.flightId}>
-                                    <h1>{flight.flightNum}</h1>
-                                    <h1>{flight.flightOrigin}</h1>
-                                    <h1>{flight.flightDestination}</h1>
-                                    <h1>{flight.flightDepartureDT}</h1>
-                                    <h1>{flight.flightArrivalDT}</h1>
-                                    <h1>{flight.flightStatus}</h1>
-                                </div>
-                                                           
-                                )
-                    }
-                            </tr>
-                            </tbody>
-                        </table>
-                   
-
-{/* <table className='flight-table'>
-                <tbody>
-                    <tr className='flight-table-head'>
-                        <th className='flight-table-cell'>FLIGHT ID</th>
-                        <th className='flight-table-cell'>FLIGHT NUMBER</th>
-                        <th className='flight-table-cell'>ORIGIN</th>
-                        <th className='flight-table-cell'>DESTINATION</th>
-                        <th className='flight-table-cell'>DEPARTURE DATE/TIME</th>
-                        <th className='flight-table-cell'>ARRIVAL DATE/TIME</th>
-                        <th className='flight-table-cell'>STATUS</th>
-                        <th className='flight-table-cell'>ACTION</th>
-                        <th className='flight-table-cell'>ACTION</th>
-                    </tr>
-                    {
-                        this.props.flightList.map((flight, index) =>{
-                            return (
-                                <tr className='flight-table-row' key={index}>
-                                    <th className='flight-table-cell'>{index}</th>
-                                    <th className='flight-table-cell'>{flight.flightNum}</th>
-                                    <th className='flight-table-cell'>{flight.flightOrigin}</th>
-                                    <th className='flight-table-cell'>{flight.flightDestination}</th>
-                                    <th className='flight-table-cell'>{flight.flightDepartureDT}</th>
-                                    <th className='flight-table-cell'>{flight.flightArrivalDT}</th>
-                                    <th className='flight-table-cell'>{flight.flightStatus}</th>
-                            <th className='flight-table-cell'><button type='button' className="edit-btn" onClick={this.openPopupbox}>Edit</button></th>
-                            <th className='flight-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deleteFlight(index)}>Delete</button></th>
-                           
-                                </tr>
-                            )
-                    })
-                    }
-                </tbody>
-                </table> */}
-                    </center>
-                    
-                </div>
-                </Fragment>
+                                this.state.flightList.filter(searchingFor(term)).map((flight,index) => {
+                                    return(
+                                        <tr className='flight-table-row' key={flight.flightId}>
+                                            <th className='flight-table-cell'>{flight.flightId}</th>
+                                            <th className='flight-table-cell'>{flight.flightNum}</th>
+                                            <th className='flight-table-cell'>{flight.flightOrigin}</th>
+                                            <th className='flight-table-cell'>{flight.flightDestination}</th>
+                                            <th className='flight-table-cell'>{flight.flightDepartureDT}</th>
+                                            <th className='flight-table-cell'>{flight.flightArrivalDT}</th>
+                                            <th className='flight-table-cell'>{flight.flightStatus}</th>
+                                            <th className='flight-table-cell'><button type='button' className="edit-btn" onClick={this.openPopupbox}>Edit</button></th>
+                                            <th className='flight-table-cell'><button type='button' className="delete-btn" onClick={() => this.deleteFlight(index)}>Delete</button></th>
+                                        </tr>
+                                    )
+                                })
+                            }       
+                    </tbody>
+                </table>                      
+            </div>           
+        </div>
+    </Fragment>
        
         )
     }

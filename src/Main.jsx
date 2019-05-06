@@ -8,6 +8,8 @@ import Home from "./components/Home";
 import AddPassenger from "./components/AddPassenger";
 import AddFlights from "./components/AddFlights";
 import SearchFlights from "./components/SearchFlights";
+import BookPassenger from "./components/BookPassenger";
+
 
 
 class Main extends Component {
@@ -20,13 +22,15 @@ class Main extends Component {
           <ul className="header">
             <li><NavLink to="/Home">Home</NavLink></li>
             <li><NavLink to="/AddPassenger">Add Passenger</NavLink></li>
-            <li><NavLink to="/AddFlights">Add/Book Flights</NavLink></li>
+            <li><NavLink to="/AddFlights">Add Flights</NavLink></li>
+            <li><NavLink to="/BookPassenger">Book Passenger</NavLink></li>
             <li><NavLink to="/SearchFlights">Search Flights</NavLink></li>        
           </ul>
           <div className="content">
             <Route exact path="/Home" component={Home}/>
             <Route path="/AddPassenger" component={AddPassenger}/>
             <Route path="/AddFlights" component={AddFlights}/>
+            <Route path="/BookPassenger" component={BookPassenger}/>
             <Route path="/SearchFlights" component={SearchFlights}/>
            
           </div>

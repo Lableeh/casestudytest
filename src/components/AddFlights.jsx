@@ -2,6 +2,7 @@ import React, { Component , Fragment} from "react";
 import "../css/AddFlight.css"
 import AddFlightsforms from '../components/AddFlightsforms'
 import AddFlightsTables from '../components/AddFlightsTables'
+import airport from '../images/airport.jpg'
 import axios from "axios";
 
 
@@ -23,7 +24,7 @@ class AddFlights extends Component {
     };
   }
 
-// (GET METHOD) GET FLIGHT DATA
+// (GET METHOD) DISPLAY INTIAL FLIGHT DATA
 getFlights(){
   axios.get(`http://localhost:8080/restsample01/rest/flights`)
     .then(res => {
@@ -32,9 +33,11 @@ getFlights(){
       })
 }
 
+
 componentDidMount(){
   this.getFlights();
 }
+
 
   handleChangeFlightInfo = e => {
     const {name, value} = e.target;
@@ -108,92 +111,7 @@ componentDidMount(){
           </div>
 
         <div className="flight-form-wrapper">  
-        <form>
-          <h2><center>Book Passenger</center></h2>
-          <br/>
-            <div className="row">
-              <div className="col-25">
-                <label>Flight ID: </label>
-              </div>
-            <div className="col-75">
-              <input 
-                type="text" 
-                name="FlightID" 
-                placeholder="Enter Your Flight ID" 
-                onChange={this.props.handleChangeInfo} 
-              />
-            </div>
-          </div>
-
-          <div className="row">
-              <div className="col-25">
-                <label>Passenger ID: </label>
-              </div>
-            <div className="col-75">
-              <input 
-                type="text" 
-                name="PassengerID" 
-                placeholder="Enter Your Passenger ID" 
-                onChange={this.props.handleChangeInfo} 
-              />
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-25">
-              <label>Destination:</label>
-            </div>
-            <div className="col-75">
-              <input type="text" list="destination" placeholder="Enter Your Destination" onChange={this.props.handleChangeInfo}/>
-                <datalist id="destination">
-                  <option value="Manila" />
-                  <option value="Boracay (caticlan)" />
-                  <option value="Cebu" />
-                  <option value="Coron" />
-                  <option value="Davao" />
-                  <option value="Puerta Prinsesa" />
-                  <option value="Surigao" />
-                </datalist>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-25">
-              <label>Flight Date/Time: </label>
-            </div>
-            <div className="col-75">
-              <input 
-                type="datetime-local" 
-                name="FlightDT" 
-                placeholder="Enter Flight Date and Time" 
-                onChange={this.props.handleChangeInfo} 
-              />
-            </div>    
-          </div>
-
-          <div className="row">
-            <div className="col-25">
-              <label>Class:</label>
-            </div>
-            <div className="col-75">
-              <input type="text" list="class-type" placeholder="Select Class" onChange={this.props.handleChangeInfo}/>
-                <datalist id="class-type">
-                  <option value="First" />
-                  <option value="Business Class" />
-                  <option value="Economy" />
-                </datalist>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-25">
-            </div>
-            <div className="col-75">
-              <button type="button" className="button" onClick={this.props.handleAddPassenger}>Book</button>
-            </div>
-          </div>
-          
-          </form>
+        <img src={airport} alt="Stewardess" width="550px" height="400px" className="airport"></img>
         </div>
 
           
@@ -201,6 +119,7 @@ componentDidMount(){
           <div className='flight-table-panel'>
             <AddFlightsTables flightList={this.state.flightList} deleteFlight={this.deleteFlight} />
           </div>
+
       </div>
     
     );
