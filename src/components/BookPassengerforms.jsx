@@ -40,6 +40,26 @@ class BookPassengerforms extends Component{
 
             <div className="row">
               <div className="col-25">
+                <label>Class:</label>
+              </div>
+              <div className="col-75">
+                <input 
+                  type="text" 
+                  list="flightClass" 
+                  name="flightClass"
+                  placeholder="Enter Flight Class" 
+                  onChange={this.props.handleChangeBookPassengerInfo}
+                />
+                <datalist id="flightClass">
+                  <option value="first" />
+                  <option value="Business Class" />
+                  <option value="Economy" />
+                </datalist>
+              </div>
+            </div>
+
+            <div className="row">
+              <div className="col-25">
               </div>
               <div className="col-75">
                 <button type="button" className="button" onClick={this.props.handleAddBookPassenger}>Book</button>

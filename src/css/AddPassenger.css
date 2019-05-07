@@ -3,11 +3,12 @@
 	  border-radius: 5px;
     background-color: #edf7fc		;
     padding: 20px;
-    width: 45%;
+    width: 46%;
     float: left;
-    height: 400px;
+    height: 470px;
     margin-left: 3%;
     position: relative;
+    padding-left: 2%;
 }
 .body-wrapper:after{
 	display:table;
@@ -143,7 +144,7 @@ input[type=submit]:hover {
   border-radius: 5px;
   padding: 20px;
   width:100%;
-  margin-top: 7%;
+  margin-top: 13%;
 }
 
 .passenger-table {
@@ -169,5 +170,6 @@ input[type=submit]:hover {
   background-color:#005b96;
   color: white;
 }
+
 
 

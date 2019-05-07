@@ -23,35 +23,6 @@ function searchingFor(term){
     }
 }
 
-// function searchingFor(term){
-//     return function(x,searchBy){
-//        if(searchBy == "Flight Id"){
-//         return  x.flightId.toString().toLowerCase().includes(term.toString().toLowerCase());
-//        }
-//        else if(searchBy == "Flight Number"){
-//         return  x.flightNum.toString().toLowerCase().includes(term.toString().toLowerCase()) ;
-//        }
-//        else if(searchBy == "Flight Origin"){
-//         return x.flightOrigin.toString().toLowerCase().includes(term.toString().toLowerCase())
-//        }
-//        else if(searchBy == "Flight Destination"){
-//         x.flightDestination.toString().toLowerCase().includes(term.toString().toLowerCase())
-//        }
-//        else if(searchBy == "Flight Departure Date/Time"){
-//         x.flightDepartureDT.toString().toLowerCase().includes(term.toString().toLowerCase())
-//        }
-//        else if(searchBy == "Flight Arrivale Date/Time"){
-//         x.flightArrivalDT.toString().toLowerCase().includes(term.toString().toLowerCase())
-//        }
-//        else if(searchBy == "Flight Status"){
-//         x.flightStatus.toString().toLowerCase().includes(term.toString().toLowerCase());
-//        }
-       
-//     }
-// }
-
-
-
 class SearchFlights extends Component {
   
     constructor(props) {
@@ -101,28 +72,18 @@ class SearchFlights extends Component {
         return (
             <Fragment>
             <div className="search-form-wrapper">  
-                    <center>
-                        <form>
-                            <input 
-                                type = "text"
-                                placeholder = "Search"
-                                onChange = {this.searchHandler}
-                                value={term}
-                                className = "search-bar"
-                            />
-                            <img src={searchIcon} alt="search-icon" width="50px" height="50px" className="search-icon"></img>
-                            {/* <input type="text" list="searchBy" placeholder=""/>
-                                <datalist id="searchBy">
-                                <option value="Flight Id" />
-                                <option value="Flight Number" />
-                                <option value="Flight Origin" />
-                                <option value="Flight Destination" />
-                                <option value="Flight Departure Date/Time" />
-                                <option value="Flight Arrival Date/Time" />
-                                <option value="Flight Status" />
-                            </datalist> */}
-                        </form>
-                    </center>  
+                <center>
+                    <form>
+                        <input 
+                            type = "text"
+                            placeholder = "Search"
+                            onChange = {this.searchHandler}
+                            value={term}
+                            className = "search-bar"
+                        />
+                        <img src={searchIcon} alt="search-icon" width="50px" height="50px" className="search-icon"></img>
+                    </form>
+                </center>  
                         
             <div className = "searchFlight-display-container">
                 <table className = "searchFlight-table">
@@ -138,28 +99,28 @@ class SearchFlights extends Component {
                             <th className='flight-table-cell'>ACTION</th>
                             <th className='flight-table-cell'>ACTION</th>
                         </tr>                           
-                            {
-                                this.state.flightList.filter(searchingFor(term)).map((flight,index) => {
-                                    return(
-                                        <tr className='flight-table-row' key={flight.flightId}>
-                                            <th className='flight-table-cell'>{flight.flightId}</th>
-                                            <th className='flight-table-cell'>{flight.flightNum}</th>
-                                            <th className='flight-table-cell'>{flight.flightOrigin}</th>
-                                            <th className='flight-table-cell'>{flight.flightDestination}</th>
-                                            <th className='flight-table-cell'>{flight.flightDepartureDT}</th>
-                                            <th className='flight-table-cell'>{flight.flightArrivalDT}</th>
-                                            <th className='flight-table-cell'>{flight.flightStatus}</th>
-                                            <th className='flight-table-cell'><button type='button' className="edit-btn" onClick={this.openPopupbox}>Edit</button></th>
-                                            <th className='flight-table-cell'><button type='button' className="delete-btn" onClick={() => this.deleteFlight(index)}>Delete</button></th>
-                                        </tr>
-                                    )
-                                })
-                            }       
+                {
+                    this.state.flightList.filter(searchingFor(term)).map((flight,index) => {
+                        return(
+                            <tr className='flight-table-row' key={flight.flightId}>
+                                <th className='flight-table-cell'>{flight.flightId}</th>
+                                <th className='flight-table-cell'>{flight.flightNum}</th>
+                                <th className='flight-table-cell'>{flight.flightOrigin}</th>
+                                <th className='flight-table-cell'>{flight.flightDestination}</th>
+                                <th className='flight-table-cell'>{flight.flightDepartureDT}</th>
+                                <th className='flight-table-cell'>{flight.flightArrivalDT}</th>
+                                <th className='flight-table-cell'>{flight.flightStatus}</th>
+                                <th className='flight-table-cell'><button type='button' className="edit-btn" onClick={this.openPopupbox}>Edit</button></th>
+                                <th className='flight-table-cell'><button type='button' className="delete-btn" onClick={() => this.deleteFlight(index)}>Delete</button></th>
+                            </tr>
+                        )
+                    })
+                }       
                     </tbody>
                 </table>                      
             </div>           
         </div>
-    </Fragment>
+        </Fragment>
        
         )
     }

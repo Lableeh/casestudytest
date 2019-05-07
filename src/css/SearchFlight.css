@@ -89,7 +89,7 @@
 /*Original alternate row code .user-table tr:nth-child(even){background-color: #f2f2f2;}*/ 
 .searchFlight-table tr:hover {background-color: #ddd;}
 
-.searchFlight-table-head th {
+.searchFlight-table-head th{
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;

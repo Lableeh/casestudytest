@@ -9,37 +9,34 @@ class BookPassenger extends Component{
         super(props);
     
         this.state = {
-          flightList: [],
-          flight: {
-            flightId: "",
-            flightNum: "",
-            flightOrigin: "",
-            flightDestination: "",
-            flightDepartureDT: "",
-            flightArrivalDT: "",
-            flightStatus: ""
-          }
+          bookPassengerList: [],
+          bookPassenger: {
+            bookId: "",
+            pflightId: "",
+            passengerId: "",
+            flightClass: ""
+          } 
         };
       }
 
 // (GET METHOD) DISPLAY INITIAL BOOKED PASSENGER DATA
-getPassengers(){
+getBookPassengers(){
     axios.get(`http://localhost:8080/restsample01/rest/passengers`)
       .then(res => {
-          const flightList = res.data;
-          this.setState({flightList:flightList});
+          const bookPassengerList = res.data;
+          this.setState({bookPassengerList:bookPassengerList});
         })
   }
 
   componentDidMount(){
-    this.getPassengers();
+    this.getBookPassengers();
   }
 
   handleChangeBookPassengerInfo = e => {
     const {name, value} = e.target;
     this.setState((prevState) => ({
-      flight: {
-        ...prevState.flight,
+      bookPassenger: {
+        ...prevState.bookPassenger,
         [name]: value
       }
     }));
@@ -47,17 +44,17 @@ getPassengers(){
 
   // (POST METHOD) ADD FLIGHTS
   handleAddBookPassenger = e => {
-    let flight = this.state.flight;
-    let flightList = [...this.state.flightList];
-    flightList.push(flight);
-    this.setState({flightList : flightList});
+    let bookPassenger = this.state.bookPassenger;
+    let bookPassengerList = [...this.state.bookPassengerList];
+    bookPassengerList.push(bookPassenger);
+    this.setState({bookPassengerList : bookPassengerList});
     e.preventDefault();
     console.log("post");
-    console.log(flight);
+    console.log(bookPassenger);
     let headers = {
       'Content-Type': 'application/json',
   }
-  axios.post(`http://localhost:8080/restsample01/rest/passengers`,flight, {headers:headers})
+  axios.post(`http://localhost:8080/restsample01/rest/passengers`,bookPassenger, {headers:headers})
     .then(res =>{
         console.log(res);
         console.log(res.data);
@@ -66,9 +63,9 @@ getPassengers(){
 
 // (DELETE METHOD)
 deleteBookPassenger = rowIndex => {
-    let flightList = [...this.state.flightList];
-    flightList.splice(rowIndex, 1);
-    this.setState({flightList: flightList});
+    let bookPassengerList = [...this.state.bookPassengerList];
+    bookPassengerList.splice(rowIndex, 1);
+    this.setState({bookPassengerList: bookPassengerList});
 
     axios.delete(`http://localhost:8080/restsample01/rest/passengers/${rowIndex}`)
     .then(res =>{
@@ -90,7 +87,7 @@ deleteBookPassenger = rowIndex => {
 
             {/* Display Flight Table */}
             <div className='flight-table-panel'>
-                <BookPassengerTables flightList={this.state.flightList} deleteFlight={this.deleteBookPassenger} />
+                <BookPassengerTables bookPassengerList={this.state.bookPassengerList} deleteBookPassenger={this.deleteBookPassenger} />
             </div>
             </div>
         )

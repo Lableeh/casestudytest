@@ -8,7 +8,7 @@ class AddFlightsforms extends Component{
           <div className="flight-form-wrapper">
           <h2><center>Add Flight</center></h2>
           <br />
-          <form>
+          <form className = "flight-form">
             <div className="row">
               <div className="col-25">
                 <label>Flight Number: </label>

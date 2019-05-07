@@ -64,7 +64,7 @@ handleChangeInfo = e => {
   }
 
   // (DELETE METHOD)
-  deletePassenger = rowIndex => {
+  deleteBookPassenger = rowIndex => {
     let passengerList = [...this.state.passengerList];
     passengerList.splice(rowIndex, 1);
     this.setState({passengerList: passengerList});
@@ -94,14 +94,14 @@ handleChangeInfo = e => {
           
  
           <div className="passenger-form-wrapper">
-         <img src={stewardess} alt="Stewardess" width="550px" height="360px" className="stewardess"></img>
+         <img src={stewardess} alt="Stewardess" width="550px" height="420px" className="stewardess"></img>
         </div>
       
           <br/>
 
           {/* Display Passenger Table */}
           <div className='table-panel'>
-            <AddPassengerTables passengerList={this.state.passengerList} deletePassenger={this.deletePassenger} />
+            <AddPassengerTables passengerList={this.state.passengerList} deleteBookPassenger={this.deleteBookPassenger} />
           </div>
         
         
