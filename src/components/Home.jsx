@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ApLogo from "../images/airplane1.png"
 import bg from "../images/home.jpg"
 import "../css/Home.css"
  

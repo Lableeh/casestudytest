@@ -1,5 +1,5 @@
 .bookPassenger-form-wrapper{
-    border-radius: 5px;
+    border-radius: 25px;
     background-color: #edf7fc		;
     padding: 20px;
     width: 45%;
@@ -80,4 +80,7 @@
     text-align: center;
     background-color:#005b96;
     color: white;
+}
+h3{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }

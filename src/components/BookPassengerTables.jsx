@@ -22,7 +22,6 @@ class BookPassengerTables extends Component{
                         <th className='bookpassenger-table-cell'>PASSENGER ID</th>
                         <th className='bookpassenger-table-cell'>CLASS</th>
                         <th className='bookpassenger-table-cell'>ACTION</th>
-                        <th className='bookpassenger-table-cell'>ACTION</th>
                     </tr>
                     {
                         this.props.bookPassengerList.map((bookPassenger, index) =>{
@@ -38,7 +37,6 @@ class BookPassengerTables extends Component{
                                     <th className='bookpassenger-table-cell'>{bookPassenger.flightStatus}</th>
                                     <th className='bookpassenger-table-cell'>{bookPassenger.passengerId}</th>  
                                     <th className='bookpassenger-table-cell'>{bookPassenger.flightClass}</th>         
-                            <th className='bookpassenger-table-cell'><button type='button' className="edit-btn" onClick={this.openPopupbox}>Edit</button></th>
                             <th className='bookpassenger-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deleteBookPassenger(index)}>Delete</button></th>
                            
                                 </tr>

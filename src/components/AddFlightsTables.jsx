@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import "../css/AddFlight.css";
-import Popup from "reactjs-popup";
 class AddFlightsTables extends Component{
     
     render(){
@@ -10,7 +9,7 @@ class AddFlightsTables extends Component{
                 <Fragment>
                 <div className="flight-display-container">
                 <table className='flight-table'>
-                <tbody>
+                    <thead>
                     <tr className='flight-table-head'>
                         <th className='flight-table-cell'>FLIGHT ID</th>
                         <th className='flight-table-cell'>FLIGHT NUMBER</th>
@@ -22,19 +21,21 @@ class AddFlightsTables extends Component{
                         <th className='flight-table-cell'>ACTION</th>
                         <th className='flight-table-cell'>ACTION</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     {
                         this.props.flightList.map((flight, index) =>{
                             return (
                                 <tr className='flight-table-row' key={index}>
-                                    <th className='flight-table-cell'>{flight.flightId}</th>
-                                    <th className='flight-table-cell'>{flight.flightNum}</th>
-                                    <th className='flight-table-cell'>{flight.flightOrigin}</th>
-                                    <th className='flight-table-cell'>{flight.flightDestination}</th>
-                                    <th className='flight-table-cell'>{flight.flightDepartureDT}</th>
-                                    <th className='flight-table-cell'>{flight.flightArrivalDT}</th>
-                                    <th className='flight-table-cell'>{flight.flightStatus}</th>
-                            <th className='flight-table-cell'><button type='button' className="edit-btn" onClick={this.openPopupbox}>Edit</button></th>
-                            <th className='flight-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deleteFlight(index)}>Delete</button></th>
+                                    <td className='flight-table-cell'>{flight.flightId}</td>
+                                    <td className='flight-table-cell'>{flight.flightNum}</td>
+                                    <td className='flight-table-cell'>{flight.flightOrigin}</td>
+                                    <td className='flight-table-cell'>{flight.flightDestination}</td>
+                                    <td className='flight-table-cell'>{flight.flightDepartureDT}</td>
+                                    <td className='flight-table-cell'>{flight.flightArrivalDT}</td>
+                                    <td className='flight-table-cell'>{flight.flightStatus}</td>
+                            <td className='flight-table-cell'><button type='button' className="edit-btn" onClick={this.openPopupbox}>Edit</button></td>
+                            <td className='flight-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deleteFlight(index)}>Delete</button></td>
                            
                                 </tr>
                             )

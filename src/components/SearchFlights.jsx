@@ -4,13 +4,6 @@ import "../css/SearchFlight.css";
 import searchIcon from "../images/search-icon.png"
 import axios from 'axios'
 
-
-// function searchingFor(term){
-//     return function(x){
-//         return x.flightId.toString().toLowerCase().includes(term.toString().toLowerCase()) || !term;
-//     }
-// }
-
 function searchingFor(term){
     return function(x){
         return x.flightId.toString().toLowerCase().includes(term.toString().toLowerCase()) || 
@@ -22,6 +15,26 @@ function searchingFor(term){
         x.flightStatus.toString().toLowerCase().includes(term.toString().toLowerCase());
     }
 }
+
+// function searchingFor(term){
+//     return function(x){
+//         if(x.flightId.toString().toLowerCase().includes(term.toString().toLowerCase()) ){
+//             console.log(x.flightId)
+//             return x;
+ 
+//         }
+//         else if(x.flightOrigin.toString().toLowerCase().includes(term.toString().toLowerCase()) ){
+//             return x;
+//         }
+//         else if(x.flightDestination.toString().toLowerCase().includes(term.toString().toLowerCase()) ){
+//             return x ; 
+//         }
+//         else if(x.flightNum.toString().toLowerCase().includes(term.toString().toLowerCase()) ){
+//             console.log(x.flightNum)
+//             return x ; 
+//         }
+//     }
+// }
 
 class SearchFlights extends Component {
   
@@ -97,7 +110,7 @@ class SearchFlights extends Component {
                             <th className='flight-table-cell'>ARRIVAL DATE/TIME</th>
                             <th className='flight-table-cell'>STATUS</th>
                             <th className='flight-table-cell'>ACTION</th>
-                            <th className='flight-table-cell'>ACTION</th>
+                          
                         </tr>                           
                 {
                     this.state.flightList.filter(searchingFor(term)).map((flight,index) => {
@@ -110,7 +123,6 @@ class SearchFlights extends Component {
                                 <th className='flight-table-cell'>{flight.flightDepartureDT}</th>
                                 <th className='flight-table-cell'>{flight.flightArrivalDT}</th>
                                 <th className='flight-table-cell'>{flight.flightStatus}</th>
-                                <th className='flight-table-cell'><button type='button' className="edit-btn" onClick={this.openPopupbox}>Edit</button></th>
                                 <th className='flight-table-cell'><button type='button' className="delete-btn" onClick={() => this.deleteFlight(index)}>Delete</button></th>
                             </tr>
                         )

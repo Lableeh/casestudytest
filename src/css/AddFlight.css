@@ -2,7 +2,7 @@ form{
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 .flight-form-wrapper{
-  border-radius: 5px;
+  border-radius: 25px;
   background-color: #edf7fc		;
   padding: 20px;
   width: 45%;
@@ -140,7 +140,7 @@ form{
     border-radius: 5px;
     padding: 20px;
     width:100%;
-  
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
 .flight-table {
@@ -164,4 +164,7 @@ form{
     text-align: center;
     background-color:#005b96;
     color: white;
+}
+h3{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }

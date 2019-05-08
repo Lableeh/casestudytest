@@ -8,7 +8,7 @@ class BookPassengerforms extends Component{
             <div className="bookPassenger-form-wrapper">
               
                 <form>
-                  <h2><center>Book Passenger</center></h2>
+                  <h3><center>Book Passenger</center></h3>
                   <br/>
                   <div className="row">
                     <div className="col-25">

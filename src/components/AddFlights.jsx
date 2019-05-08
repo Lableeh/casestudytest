@@ -1,12 +1,10 @@
 import React, { Component , Fragment} from "react";
 import "../css/AddFlight.css"
 import AddFlightsforms from '../components/AddFlightsforms'
-import AddFlightsTables from '../components/AddFlightsTables'
 import airport from '../images/airport.jpg'
 import axios from "axios";
 import { Input, FormGroup, Label, Modal, ModalHeader, ModalBody, ModalFooter, Table, Button } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-
 
 class AddFlights extends Component {
   constructor(props) {
@@ -30,6 +28,7 @@ class AddFlights extends Component {
   componentWillMount() {
     this._refreshUsers();
   }
+
   toggleEditFlightModal() {
     this.setState({
       editFlightModal: ! this.state.editFlightModal
@@ -66,7 +65,7 @@ class AddFlights extends Component {
     });
   }
 
-// (GET METHOD) DISPLAY INTIAL FLIGHT DATA
+// (GET METHOD) DISPLAY INITIAL FLIGHT DATA
 getFlights(){
   axios.get(`http://localhost:8080/restsample01/rest/flights`)
     .then(res => {
@@ -110,7 +109,6 @@ componentDidMount(){
     })
 }
 
- 
 
   // (DELETE METHOD)
   deleteFlight = rowIndex => {
@@ -127,21 +125,7 @@ componentDidMount(){
 
 
   render() {
-    let flightList = this.state.flightList.map((flight) => {
-      return(
-            <tr className='flight-table-row' key ={flight.flightId}>
-              <th className='flight-table-cell'>{flight.flightNum} </th>
-              <th className='flight-table-cell'> {flight.flightOrigin}</th>
-              <th className='flight-table-cell'> {flight.flightDestination}</th>
-              <th className='flight-table-cell'> {flight.flightDepartureDT}</th>
-              <th className='flight-table-cell'> {flight.flightArrivalDT}</th>
-              <th className='flight-table-cell'> {flight.flightStatus}</th>
-              <Button color="success" size="sm" className="mr-2" onClick={this.editFlight.bind(this, flight.flightId, flight.flightNum, flight.flightOrigin,
-                flight.flightDestination, flight.flightDepartureDT, flight.flightArrivalDT, flight.flightStatus)}>Edit</Button>
-            </tr>
-
-      )
-  });
+  
 
     return (
       <div className="body-wrapper">
@@ -158,17 +142,10 @@ componentDidMount(){
         
         </div>
 
-          
-          {/* Display Flight Table */}
-        {/* <div className='flight-table-panel'>
-          <AddFlightsTables flightList={this.state.flightList} deleteFlight={this.deleteFlight} />
-        </div> */}
-
         <Modal isOpen={this.state.editFlightModal} toggle={this.toggleEditFlightModal.bind(this)}>
           <ModalHeader toggle={this.toggleEditFlightModal.bind(this)}>Edit Flight details</ModalHeader>
             <ModalBody>
             
-
               <FormGroup>
                 <Label for="flightNum">Flight Number</Label>
                 <Input id="flightNum" value={this.state.editFlightData.flightNum} onChange={(e) => {
@@ -228,6 +205,7 @@ componentDidMount(){
                   }} 
                 />
               </FormGroup>
+
             </ModalBody>
             <ModalFooter>
               <Button color="primary" onClick={this.updateFlight.bind(this)}>Update User</Button>{' '}
@@ -238,7 +216,7 @@ componentDidMount(){
           <Table className='flight-table'>
             <thead>
               <tr className='flight-table-head'>
-       
+                <th className='flight-table-cell'>FLIGHT ID</th>
                 <th className='flight-table-cell'>FLIGHT NUM</th>
                 <th className='flight-table-cell'>FLIGHT ORIGIN</th>
                 <th className='flight-table-cell'>FLIGHT DESTINATION</th>
@@ -248,13 +226,28 @@ componentDidMount(){
                 <th className='flight-table-cell'>Action</th>
               </tr>
               </thead>
-
               <tbody>
-                {flightList}
+                {
+                  this.state.flightList.map((flight) => {
+                    return(
+                      <tr className='flight-table-row' key ={flight.flightId}>
+                      <th className='flight-table-cell'>{flight.flightId} </th>
+                      <th className='flight-table-cell'>{flight.flightNum} </th>
+                      <th className='flight-table-cell'> {flight.flightOrigin}</th>
+                      <th className='flight-table-cell'> {flight.flightDestination}</th>
+                      <th className='flight-table-cell'> {flight.flightDepartureDT}</th>
+                      <th className='flight-table-cell'> {flight.flightArrivalDT}</th>
+                      <th className='flight-table-cell'> {flight.flightStatus}</th>
+                      <Button color="success" size="sm" className="mr-2" onClick={this.editFlight.bind(this, flight.flightId, flight.flightNum, flight.flightOrigin,
+                      flight.flightDestination, flight.flightDepartureDT, flight.flightArrivalDT, flight.flightStatus)}>Edit</Button>
+                      </tr>
+                      )
+                    }
+                  )
+                }
               </tbody>
-            </Table>
-
-  </div>
+          </Table>
+      </div>
     
     );
   }

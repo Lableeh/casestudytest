@@ -6,7 +6,7 @@ class AddFlightsforms extends Component{
     render(){
         return(
           <div className="flight-form-wrapper">
-          <h2><center>Add Flight</center></h2>
+          <h3><center>Add Flight</center></h3>
           <br />
           <form className = "flight-form">
             <div className="row">
