@@ -27,7 +27,7 @@ class AddPassengerTables extends Component{
                                     <th className='passenger-table-cell'>{passenger.middleName}</th>
                                     <th className='passenger-table-cell'>{passenger.lastName}</th>
                                     <th className='passenger-table-cell'>{passenger.birthDate}</th>
-                                    <th className='passenger-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deletePassenger(id)}>Delete</button></th>
+                                    <th className='passenger-table-cell'><button type='button' className="delete-btn" onClick={() => this.props.deleteBookPassenger(id)}>Delete</button></th>
                                 </tr>
                             )
                     })
